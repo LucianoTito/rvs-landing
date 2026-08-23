@@ -1,0 +1,33 @@
+# ---- Sistema operativo ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Editores ----
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# ---- Dependencias (cuando migre a Next.js) ----
+node_modules/
+.next/
+out/
+dist/
+
+# ---- Entorno ----
+.env
+.env.local
+*.local
+
+# ---- Netlify ----
+.netlify/
+
+# ---- Logs ----
+*.log
+npm-debug.log*
+
+# ---- Material de trabajo que no va al repo ----
+# Fotos originales sin optimizar y planillas del cliente
+/_material-cliente/
+*.xlsx
+*.psd

@@ -1,0 +1,285 @@
+/* ============================================================
+   COMPONENTES — Piezas reutilizables: botones, tarjetas, badges.
+   Cada bloque es independiente y puede usarse en cualquier sección.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   BOTONES
+   ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-xs);
+  padding: 0.9rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--trans), color var(--trans),
+    border-color var(--trans), translate var(--trans), filter var(--trans);
+}
+
+.btn--oro {
+  background: linear-gradient(135deg, var(--c-oro-claro), var(--c-oro-oscuro));
+  color: #1a1405;
+}
+
+.btn--fantasma {
+  border-color: var(--c-linea);
+  color: var(--c-marfil);
+}
+
+/* El hover solo se aplica en dispositivos con puntero real.
+   En celular, un :hover se queda "pegado" tras el toque. */
+@media (hover: hover) and (pointer: fine) {
+  .btn--oro:hover {
+    filter: brightness(1.12);
+    translate: 0 -2px;
+  }
+
+  .btn--fantasma:hover {
+    border-color: var(--c-oro);
+    color: var(--c-oro-claro);
+  }
+}
+
+.btn:active {
+  translate: 0 1px;
+}
+
+/* Botón circular de Instagram en la barra superior. */
+.btn-ig {
+  display: grid;
+  place-items: center;
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  min-block-size: 0;
+  flex-shrink: 0;
+  border: 1px solid var(--c-linea);
+  border-radius: 50%;
+  color: var(--c-oro-claro);
+  transition: background-color var(--trans), color var(--trans),
+    border-color var(--trans);
+}
+
+.btn-ig svg {
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
+  fill: currentcolor;
+}
+
+@media (hover: hover) {
+  .btn-ig:hover {
+    background-color: var(--c-oro);
+    color: #1a1405;
+    border-color: var(--c-oro);
+  }
+}
+
+/* Botón flotante de WhatsApp. */
+.fab {
+  position: fixed;
+  inset-block-end: max(1.4rem, env(safe-area-inset-bottom));
+  inset-inline-end: 1.4rem;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  inline-size: 3.5rem;
+  block-size: 3.5rem;
+  border-radius: 50%;
+  background-color: var(--c-whatsapp);
+  box-shadow: 0 10px 26px rgb(0 0 0 / 50%);
+  transition: scale var(--trans);
+}
+
+.fab svg {
+  inline-size: 1.9rem;
+  block-size: 1.9rem;
+  fill: #fff;
+}
+
+@media (hover: hover) {
+  .fab:hover {
+    scale: 1.08;
+  }
+}
+
+/* ------------------------------------------------------------
+   TARJETA DE PIEZA
+   ------------------------------------------------------------ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--c-linea-sutil);
+  border-radius: var(--radio);
+  background: linear-gradient(180deg, var(--c-panel), #101012);
+  transition: translate var(--trans), border-color var(--trans),
+    box-shadow var(--trans);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    translate: 0 -6px;
+    border-color: var(--c-linea);
+    box-shadow: 0 18px 40px rgb(0 0 0 / 45%);
+  }
+}
+
+.card__pic {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding-block: var(--e-md) var(--e-xs);
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 38%, #1e1e22, #0e0e10);
+}
+
+.card__pic svg {
+  inline-size: min(9.5rem, 62%);
+}
+
+/* La foto real ocupa todo el marco y se recorta al centro,
+   así todas las tarjetas tienen la misma altura. */
+.card__img {
+  inline-size: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.card--compacta .card__pic svg {
+  inline-size: min(7rem, 58%);
+}
+
+.card__tag,
+.card__uniq {
+  position: absolute;
+  inset-block-start: 0.7rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 2px;
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background-color: rgb(12 12 14 / 72%);
+  backdrop-filter: blur(4px);
+}
+
+.card__tag {
+  inset-inline-start: 0.7rem;
+  border: 1px solid var(--c-linea);
+  color: var(--c-oro-claro);
+  font-weight: 500;
+}
+
+.card__uniq {
+  inset-inline-end: 0.7rem;
+  color: var(--c-tenue);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--e-md);
+}
+
+.card--compacta .card__body {
+  padding: var(--e-sm);
+}
+
+.card__marca {
+  font-size: var(--t-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-oro);
+  margin-block-end: 0.25rem;
+}
+
+.card__modelo {
+  font-size: var(--t-xl);
+  margin-block-end: 0.15rem;
+}
+
+.card--compacta .card__modelo {
+  font-size: var(--t-lg);
+}
+
+.card__ficha {
+  font-size: var(--t-sm);
+  color: var(--c-tenue);
+  margin-block-end: var(--e-xs);
+}
+
+.card__desc {
+  font-size: var(--t-sm);
+  color: var(--c-tenue);
+  line-height: 1.5;
+  margin-block-end: var(--e-sm);
+}
+
+/* Empuja el pie al fondo, así todas las tarjetas alinean precio y botón. */
+.card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-xs);
+  margin-block-start: auto;
+  padding-block-start: var(--e-sm);
+  border-block-start: 1px solid var(--c-linea-sutil);
+}
+
+.card__precio {
+  font-family: var(--f-serif);
+  font-size: var(--t-xl);
+  color: var(--c-marfil);
+  white-space: nowrap;
+}
+
+.card__precio small {
+  font-size: var(--t-xs);
+  color: var(--c-oro);
+  margin-inline-end: 0.15rem;
+  vertical-align: 0.35em;
+}
+
+.card--compacta .card__precio {
+  font-size: var(--t-lg);
+}
+
+.card__wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--c-linea);
+  border-radius: 2px;
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-oro-claro);
+  white-space: nowrap;
+  transition: background-color var(--trans), color var(--trans),
+    border-color var(--trans);
+}
+
+.card__wa svg {
+  inline-size: 0.85rem;
+  block-size: 0.85rem;
+  fill: currentcolor;
+  flex-shrink: 0;
+}
+
+@media (hover: hover) {
+  .card__wa:hover {
+    background-color: var(--c-oro);
+    color: #1a1405;
+    border-color: var(--c-oro);
+  }
+}

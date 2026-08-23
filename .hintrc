@@ -1,0 +1,12 @@
+{
+  "extends": ["development"],
+  "browserslist": ["last 2 versions", "not dead", "> 0.5%"],
+  "hints": {
+    "compat-api/css": [
+      "warning",
+      {
+        "ignore": ["text-wrap", "text-size-adjust", "overflow-x: clip"]
+      }
+    ]
+  }
+}
